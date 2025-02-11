@@ -1,4 +1,5 @@
 import User from "../models/user.model.js";
+import Notification from "../models/notifications.model.js";
 
 export const getUserProfile = async (req, res) => {
   const { username } = req.params;
@@ -46,9 +47,29 @@ export const followUnfollowUser = async (req, res) => {
       await User.findByIdAndUpdate(req.user._id, { $push: { following: id } });
 
       //Send notification to the user
+
+      const newNotification = new Notification({
+        type: "follow",
+        from: req.user._id,
+        to: userToModify._id,
+      });
+
+      await newNotification.save();
+
+      res.status(200).json({ message: "User followed successfully" });
     }
   } catch (error) {
     console.log("Error in followUnfollowUser", error.message);
     res.status(500).json({ error: error.message });
   }
 };
+
+export const getSuggestedUsers= async (req,res) =>{
+try {
+    const userId = req.user._id;
+
+    const usersFollowedByMe = await
+} catch (error) {
+    
+}
+}
