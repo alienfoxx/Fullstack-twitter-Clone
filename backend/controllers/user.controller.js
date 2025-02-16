@@ -137,7 +137,7 @@ export const updateUserProfile = async (req, res) => {
         );
       }
 
-      const uploadedResponse = await cloudinary.uploader(profileImg);
+      const uploadedResponse = await cloudinary.uploader.upload(profileImg);
       profileImg = uploadedResponse.secure_url;
     }
     if (coverImg) {
