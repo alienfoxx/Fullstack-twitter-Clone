@@ -6,11 +6,15 @@ import XSvg from "../../../components/svgs/X";
 import { MdOutlineMail } from "react-icons/md";
 import { MdPassword } from "react-icons/md";
 
+import {useMutation} from "@tanstack/react-query"
+
 const LoginPage = () => {
 	const [formData, setFormData] = useState({
 		username: "",
 		password: "",
 	});
+
+	useMutation()
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
