@@ -8,7 +8,7 @@ router.get("/me",protectRoute,getMe)
 
 router.post("/signup", signup);
 
-router.post("/signin", signin);
+router.post("/login", signin);
 
 router.post("/signout", signout);
 
