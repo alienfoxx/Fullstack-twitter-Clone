@@ -9,8 +9,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 const Sidebar = () => {
-
-
   const queryClient = useQueryClient();
 
   const { mutate: logout } = useMutation({
@@ -29,7 +27,7 @@ const Sidebar = () => {
     },
 
     onSuccess: () => {
-	queryClient.invalidateQueries({queryKey: ["authUser"]});
+      queryClient.invalidateQueries({ queryKey: ["authUser"] });
       toast.success("Logout successfully");
     },
     onError: () => {
@@ -37,7 +35,7 @@ const Sidebar = () => {
     },
   });
 
-  const {data:authUser}=useQuery({queryKey:["authUser"]})
+  const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
   return (
     <div className="md:flex-[2_2_0] w-18 max-w-52">
@@ -107,7 +105,5 @@ const Sidebar = () => {
   );
 };
 export default Sidebar;
-
-
 
 //6.25

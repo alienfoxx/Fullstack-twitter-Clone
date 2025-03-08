@@ -22,7 +22,7 @@ function App() {
       try {
         const res = await fetch("/api/auth/me");
         const data = res.json();
-        if(data.error) return null;
+        if (data.error) return null;
         if (!res.ok) {
           throw new Error(data.error || "Something went wrong");
         }
@@ -45,7 +45,7 @@ function App() {
 
   return (
     <div className="flex max-w-6xl mx-auto">
-      { authUser &&<Sidebar />}
+      {authUser && <Sidebar />}
       <Routes>
         <Route
           path="/"
@@ -68,7 +68,7 @@ function App() {
           element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
         />
       </Routes>
-      {authUser&&<RightPanel />}
+      {authUser && <RightPanel />}
       <Toaster />
     </div>
   );
